@@ -75,7 +75,7 @@ body {
 }
 
 .brand-highlight {
-  background: linear-gradient(135deg, var(--blush-pink), var(--dusty-rose));
+  background: #DE3163;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Badge, Form, InputGroup } from 'react-bootstrap';
-
+import { Container, Row, Col, Card, Badge } from 'react-bootstrap';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
 import './StudentHome.css';
+import { useNavigate } from 'react-router-dom';
 
 const StudentHome = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
 
-  // Mock restaurant data
   const mockRestaurants = [
     {
       id: 1,
-      name: "Bella's Italian Kitchen",
+      name: "Placeholder 1",
       image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=300&fit=crop",
       isOpen: true,
       cuisine: "Italian",
@@ -22,7 +24,7 @@ const StudentHome = () => {
     },
     {
       id: 2,
-      name: "Dragon Palace",
+      name: "Placeholder 2",
       image: "https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=400&h=300&fit=crop",
       isOpen: true,
       cuisine: "Chinese",
@@ -32,7 +34,7 @@ const StudentHome = () => {
     },
     {
       id: 3,
-      name: "Taco Fiesta",
+      name: "Placeholder 3",
       image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop",
       isOpen: false,
       cuisine: "Mexican",
@@ -42,7 +44,7 @@ const StudentHome = () => {
     },
     {
       id: 4,
-      name: "Burger Junction",
+      name: "Placeholder 4",
       image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop",
       isOpen: true,
       cuisine: "American",
@@ -52,7 +54,7 @@ const StudentHome = () => {
     },
     {
       id: 5,
-      name: "Sakura Sushi",
+      name: "Placeholder 5",
       image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400&h=300&fit=crop",
       isOpen: true,
       cuisine: "Japanese",
@@ -62,7 +64,7 @@ const StudentHome = () => {
     },
     {
       id: 6,
-      name: "Mediterranean Delight",
+      name: "Placeholder 6",
       image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop",
       isOpen: false,
       cuisine: "Mediterranean",
@@ -72,7 +74,7 @@ const StudentHome = () => {
     },
     {
       id: 7,
-      name: "Spice Garden",
+      name: "Placeholder 7",
       image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=300&fit=crop",
       isOpen: true,
       cuisine: "Indian",
@@ -82,7 +84,7 @@ const StudentHome = () => {
     },
     {
       id: 8,
-      name: "Fresh & Green",
+      name: "Placeholder 8",
       image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop",
       isOpen: true,
       cuisine: "Healthy",
@@ -93,8 +95,33 @@ const StudentHome = () => {
   ];
 
   useEffect(() => {
-    setRestaurants(mockRestaurants);
-    setFilteredRestaurants(mockRestaurants);
+    const fetchVendors = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'users'));
+        const vendorNames = [];
+
+        querySnapshot.forEach((docSnap) => {
+          const data = docSnap.data();
+          if (data.role === 'vendor') {
+            vendorNames.push(data.name);
+          }
+        });
+
+        const updatedRestaurants = mockRestaurants.map((restaurant, index) => ({
+          ...restaurant,
+          name: vendorNames[index] || restaurant.name,
+        }));
+
+        setRestaurants(updatedRestaurants);
+        setFilteredRestaurants(updatedRestaurants);
+      } catch (error) {
+        console.error('Error fetching vendors:', error.message);
+        setRestaurants(mockRestaurants);
+        setFilteredRestaurants(mockRestaurants);
+      }
+    };
+
+    fetchVendors();
   }, []);
 
   useEffect(() => {
@@ -105,24 +132,22 @@ const StudentHome = () => {
     setFilteredRestaurants(filtered);
   }, [searchTerm, restaurants]);
 
-  const handleSearch = (term) => {
-    setSearchTerm(term);
-  };
-
-  const RestaurantCard = ({ restaurant }) => (
+  const RestaurantCard = ({ restaurant, index }) => (
     <Col lg={3} md={4} sm={6} xs={12} className="mb-4">
-      <Card className="restaurant-card h-100">
+      <Card
+        className="restaurant-card h-100"
+        onClick={() => navigate(`/student/restaurant/${index}`)}
+        style={{ cursor: 'pointer' }}
+      >
         <div className="restaurant-image-container">
-          <Card.Img 
-            variant="top" 
-            src={restaurant.image} 
+          <Card.Img
+            variant="top"
+            src={restaurant.image}
             alt={restaurant.name}
             className="restaurant-image"
           />
           <div className="restaurant-status-overlay">
-            <Badge 
-              className={`status-badge ${restaurant.isOpen ? 'open' : 'closed'}`}
-            >
+            <Badge className={`status-badge ${restaurant.isOpen ? 'open' : 'closed'}`}>
               {restaurant.isOpen ? 'Open' : 'Closed'}
             </Badge>
           </div>
@@ -137,12 +162,8 @@ const StudentHome = () => {
           <div className="restaurant-details">
             <span className="cuisine-type">{restaurant.cuisine}</span>
             <div className="restaurant-meta">
-              <span className="rating">
-                ⭐ {restaurant.rating}
-              </span>
-              <span className="delivery-time">
-                🕒 {restaurant.deliveryTime}
-              </span>
+              <span className="rating">⭐ {restaurant.rating}</span>
+              <span className="delivery-time">🕒 {restaurant.deliveryTime}</span>
             </div>
           </div>
         </Card.Body>
@@ -151,50 +172,48 @@ const StudentHome = () => {
   );
 
   return (
-    <>
-      
-      <div className="student-home">
-        <Container fluid className="px-4">
-          <div className="welcome-section">
-            <Row className="align-items-center mb-4">
-              <Col>
-                <h1 className="page-title">Good afternoon! 👋</h1>
-                <p className="page-subtitle">What would you like to eat today?</p>
-              </Col>
-            </Row>
-          </div>
+    <div className="student-home">
+      <Container fluid className="px-4">
+        <div className="welcome-section">
+          <Row className="align-items-center mb-4">
+            <Col>
+              <h1 className="page-title">Good afternoon! 👋</h1>
+              <p className="page-subtitle">What would you like to eat today?</p>
+            </Col>
+          </Row>
+        </div>
 
-          <div className="restaurants-section">
-            <Row className="mb-3">
-              <Col>
-                <h2 className="section-title">Popular Restaurants</h2>
-                <p className="section-subtitle">
-                  {filteredRestaurants.length} restaurants available
-                </p>
-              </Col>
-            </Row>
-            
+        <div className="restaurants-section">
+          <Row className="mb-3">
+            <Col>
+              <h2 className="section-title">Popular Restaurants</h2>
+              <p className="section-subtitle">
+                {filteredRestaurants.length} restaurants available
+              </p>
+            </Col>
+          </Row>
+
+          <Row>
+            {filteredRestaurants.map((restaurant, index) => (
+              <RestaurantCard key={index} restaurant={restaurant} index={index} />
+            ))}
+          </Row>
+
+          {filteredRestaurants.length === 0 && (
             <Row>
-              {filteredRestaurants.map(restaurant => (
-                <RestaurantCard key={restaurant.id} restaurant={restaurant} />
-              ))}
+              <Col className="text-center py-5">
+                <div className="no-results">
+                  <h3>No restaurants found</h3>
+                  <p>Try searching for a different cuisine or restaurant name</p>
+                </div>
+              </Col>
             </Row>
-
-            {filteredRestaurants.length === 0 && (
-              <Row>
-                <Col className="text-center py-5">
-                  <div className="no-results">
-                    <h3>No restaurants found</h3>
-                    <p>Try searching for a different cuisine or restaurant name</p>
-                  </div>
-                </Col>
-              </Row>
-            )}
-          </div>
-        </Container>
-      </div>
-    </>
+          )}
+        </div>
+      </Container>
+    </div>
   );
 };
 
 export default StudentHome;
+

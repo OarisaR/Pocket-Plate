@@ -29,6 +29,7 @@ const Welcome = () => {
                   <Button 
                     className="btn-primary-custom me-3 mb-3" 
                     size="lg"
+                    style = {{backgroundColor : '#DE3163'}}
                     onClick={() => setShowSignup(true)}
                   >
                     Get Started

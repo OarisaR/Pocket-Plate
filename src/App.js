@@ -2,40 +2,65 @@ import './App.css';
 import MyNav from './components/NavBar';
 import Welcome from './pages/Welcome';
 import Register from './pages/Register';
-import { Routes, Route } from 'react-router-dom';
+import StudentHome from './pages/StudentHome';
+import VendorHome from './pages/VendorHome'; // create if needed
+import VendorProfile from './pages/VendorProfile';
+import Menu from './pages/Menu';
+import VendorOrderHistory from './pages/VendorOrderHistory';
+import StudentProfile from './pages/StudentProfile';
+import RestaurantDetail from './pages/RestaurantDetail';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-import { useEffect } from 'react';
-import { db } from './firebase';
-import { collection, addDoc } from 'firebase/firestore';
-import StudentHome from './pages/StudentHome';
+import { useEffect, useState } from 'react';
+import { auth, db } from './firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
 
 function App() {
-  // 🔥 Test Firestore connection once on load
-  useEffect(() => {
-    const testFirestore = async () => {
-      try {
-        const docRef = await addDoc(collection(db, "testCollection"), {
-          testField: "It works!",
-          timestamp: new Date(),
-        });
-        console.log("✅ Firestore connected. Document ID:", docRef.id);
-      } catch (error) {
-        console.error("❌ Firestore connection failed:", error.message);
-      }
-    };
+  const [role, setRole] = useState('guest');
+  const navigate = useNavigate();
 
-    testFirestore();
+  // Auto-check role on login
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const docRef = doc(db, 'users', user.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const userRole = docSnap.data().role;
+          setRole(userRole);
+
+          if (userRole === 'student') navigate('/student-home');
+          else if (userRole === 'vendor') navigate('/vendor-home');
+        } else {
+          console.log('❌ No user doc found in Firestore');
+        }
+      } else {
+        setRole('guest');
+      }
+    });
+
+    return () => unsubscribe(); // cleanup
   }, []);
 
   return (
     <>
-      <MyNav />
+      <MyNav role={role} setRole={setRole} />
+
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/register" element={<Register />} />
         <Route path="/student-home" element={<StudentHome />} />
+        <Route path="/vendor-home" element={<VendorHome />} />
+        <Route path="/vendor/profile" element={<VendorProfile/>} />
+        <Route path = "/vendor/menu" element={<Menu/>}/>
+        <Route path="/vendor/orders" element={<VendorOrderHistory/>} />
+        <Route path="/student/profile" element={<StudentProfile />} />
+        
+<Route path="/student/restaurant/:id" element={<RestaurantDetail />} />
         <Route
           path="/pricing"
           element={
@@ -50,4 +75,5 @@ function App() {
 }
 
 export default App;
+
 
