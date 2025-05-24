@@ -1,16 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import MyNav from './components/NavBar';
+import Welcome from './pages/Welcome';
+import Register from './pages/Register';
 import { Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-import { auth, db } from "./firebase";
-import { collection, addDoc } from "firebase/firestore";
-import { useEffect } from "react";
-
-// Console test
-console.log("Firebase Auth Instance:", auth);
+import { useEffect } from 'react';
+import { db } from './firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 function App() {
   // 🔥 Test Firestore connection once on load
@@ -34,7 +32,16 @@ function App() {
     <>
       <MyNav />
       <Routes>
-        <Route path="/" element={<div>Welcome to Pocket Plate</div>} />
+        <Route path="/" element={<Welcome />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/pricing"
+          element={
+            <h1 style={{ paddingTop: '100px', textAlign: 'center', color: '#4a5568' }}>
+              Pricing Page Coming Soon
+            </h1>
+          }
+        />
       </Routes>
     </>
   );
