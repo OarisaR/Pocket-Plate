@@ -5,6 +5,7 @@ import Register from './pages/Register';
 import { Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import StudentHome from './pages/StudentHome';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/student-home" element={<StudentHome />} />
         <Route path="/pricing" element={<h1 style={{paddingTop: '100px', textAlign: 'center', color: '#4a5568'}}>Pricing Page Coming Soon</h1>} />
       </Routes>
     </>

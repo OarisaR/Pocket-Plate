@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Badge, Form, InputGroup } from 'react-bootstrap';
-import StudentNavBar from '../components/StudentNavBar';
+
 import './StudentHome.css';
 
 const StudentHome = () => {
@@ -152,7 +152,7 @@ const StudentHome = () => {
 
   return (
     <>
-      <StudentNavBar onSearch={handleSearch} />
+      
       <div className="student-home">
         <Container fluid className="px-4">
           <div className="welcome-section">

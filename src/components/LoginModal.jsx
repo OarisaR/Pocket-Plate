@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Form, Button, Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom'; // ⬅️ Add this
 
 const LoginModal = ({ show, onHide }) => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,8 @@ const LoginModal = ({ show, onHide }) => {
   });
   const [showAlert, setShowAlert] = useState(false);
 
+  const navigate = useNavigate(); // ⬅️ Initialize the hook
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -15,23 +18,21 @@ const LoginModal = ({ show, onHide }) => {
     });
   };
 
- const handleSubmit = (e) => {
-  e.preventDefault();
-  const { email, password } = formData;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { email, password } = formData;
 
-  if (email === 'admin@example.com' && password === 'admin123') {
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-      onHide();
-      alert('Login successful! 🎉');
-      // You can also redirect or update state here
-    }, 1500);
-  } else {
-    alert('Invalid email or password ❌');
-  }
-};
-
+    if (email === 'admin@example.com' && password === 'admin123') {
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+        onHide();
+        navigate('/dashboard'); // ⬅️ Redirect to /dashboard
+      }, 1000);
+    } else {
+      alert('Invalid email or password ❌');
+    }
+  };
 
   return (
     <Modal show={show} onHide={onHide} centered className="auth-modal">
@@ -39,11 +40,6 @@ const LoginModal = ({ show, onHide }) => {
         <Modal.Title className="modal-title">Welcome Back</Modal.Title>
       </Modal.Header>
       <Modal.Body className="pt-0">
-        {showAlert && (
-          <Alert variant="success" className="custom-alert">
-            Login functionality will be implemented soon!
-          </Alert>
-        )}
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
             <Form.Label className="form-label">Email Address</Form.Label>
