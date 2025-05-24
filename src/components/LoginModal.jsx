@@ -15,15 +15,23 @@ const LoginModal = ({ show, onHide }) => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your login logic here
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  const { email, password } = formData;
+
+  if (email === 'admin@example.com' && password === 'admin123') {
     setShowAlert(true);
     setTimeout(() => {
       setShowAlert(false);
       onHide();
-    }, 2000);
-  };
+      alert('Login successful! 🎉');
+      // You can also redirect or update state here
+    }, 1500);
+  } else {
+    alert('Invalid email or password ❌');
+  }
+};
+
 
   return (
     <Modal show={show} onHide={onHide} centered className="auth-modal">

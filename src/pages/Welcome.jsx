@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import LoginModal from '../components/LoginModal';
 import SignupModal from '../components/SignupModal';
-
+import './Welcome.css'; // Assuming you have a CSS file for styling
 const Welcome = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);

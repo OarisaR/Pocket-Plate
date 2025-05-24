@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
-
+import './NavBar.css'; 
 function MyNav() {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
