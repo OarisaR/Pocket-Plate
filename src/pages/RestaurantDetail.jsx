@@ -79,11 +79,7 @@ const RestaurantDetail = () => {
   return (
     <div className="restaurant-detail" style={{ position: 'relative', minHeight: '100vh' }}>
       <Container fluid className="px-4">
-<<<<<<< HEAD
         <Button onClick={() => navigate('/student-home')} className="mb-4" style={{backgroundColor: "#be185d",}}>
-=======
-        <Button variant="outline-secondary" onClick={() => navigate('/student-home')} className="mb-4">
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
           ← Back to Restaurants
         </Button>
 
@@ -104,34 +100,22 @@ const RestaurantDetail = () => {
           </Col>
 
           <Col lg={7}>
-<<<<<<< HEAD
             <h3 style={{textAlign :
   'center', marginBottom: '20px'
             }}>Menu</h3>
-=======
-            <h3>Menu</h3>
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
             {categories.map(cat => (
               <div key={cat}>
                 <h5>{cat}</h5>
                 {menuItems.filter(i => i.category === cat).map(item => (
                   <Card key={item.id} className="mb-2">
                     <Card.Body>
-<<<<<<< HEAD
                       <div className="mt- d-flex justify-content-between align-items-center">
-=======
-                      <div className="d-flex justify-content-between align-items-center">
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
                         <div>
                           <h6>{item.name}</h6>
                           <p>{item.description}</p>
                         </div>
                         <div>
-<<<<<<< HEAD
                           <strong>Tk.{item.price}</strong>
-=======
-                          <strong>${item.price}</strong>
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
                           <Button size="sm" className="ms-2" onClick={() => addToCart(item)}>
                             Add
                           </Button>

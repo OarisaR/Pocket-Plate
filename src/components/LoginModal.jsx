@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import { Modal, Form, Button, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -10,19 +9,6 @@ const LoginModal = ({ show, onHide }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-=======
-import React, { useState } from 'react';
-import { Modal, Form, Button, Alert } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
-import { auth, db, googleProvider } from '../firebase';
-
-const LoginModal = ({ show, onHide }) => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
   });
   const [showAlert, setShowAlert] = useState(false);
 
@@ -31,11 +17,7 @@ const LoginModal = ({ show, onHide }) => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-<<<<<<< HEAD
       [e.target.name]: e.target.value,
-=======
-      [e.target.name]: e.target.value
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
     });
   };
 
@@ -43,24 +25,15 @@ const LoginModal = ({ show, onHide }) => {
     e.preventDefault();
     const { email, password } = formData;
 
-<<<<<<< HEAD
     const isStudent = email.endsWith("@student.cuet.ac.bd");
     const isVendor = email.endsWith("@vendor.gmail.com");
 
     if (!isStudent && !isVendor) {
       alert("Only CUET student or vendor email addresses are allowed!");
-=======
-    const isStudent = email.endsWith('@student.cuet.ac.bd');
-    const isVendor = email.endsWith('@vendor.gmail.com');
-
-    if (!isStudent && !isVendor) {
-      alert('Only CUET student or vendor email addresses are allowed!');
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
       return;
     }
 
     try {
-<<<<<<< HEAD
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
@@ -69,27 +42,15 @@ const LoginModal = ({ show, onHide }) => {
       const uid = userCredential.user.uid;
 
       const userDoc = await getDoc(doc(db, "users", uid));
-=======
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const uid = userCredential.user.uid;
-
-      const userDoc = await getDoc(doc(db, 'users', uid));
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
       const role = userDoc.exists() ? userDoc.data().role : null;
 
       setShowAlert(true);
       setTimeout(() => {
         setShowAlert(false);
         onHide();
-<<<<<<< HEAD
         if (role === "student") navigate("/student-home");
         else if (role === "vendor") navigate("/vendor-home");
         else navigate("/"); // fallback
-=======
-        if (role === 'student') navigate('/student-home');
-        else if (role === 'vendor') navigate('/vendor-home');
-        else navigate('/'); // fallback
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
       }, 1000);
     } catch (error) {
       console.error("Login failed:", error.message);
@@ -103,7 +64,6 @@ const LoginModal = ({ show, onHide }) => {
       const user = result.user;
       const email = user.email;
 
-<<<<<<< HEAD
       const isStudent = email.endsWith("@student.cuet.ac.bd");
       const isVendor = email.endsWith("@vendor.gmail.com");
 
@@ -113,32 +73,15 @@ const LoginModal = ({ show, onHide }) => {
       }
 
       const userDoc = await getDoc(doc(db, "users", user.uid));
-=======
-      const isStudent = email.endsWith('@student.cuet.ac.bd');
-      const isVendor = email.endsWith('@vendor.gmail.com');
-
-      if (!isStudent && !isVendor) {
-        alert('Only CUET student or vendor email addresses are allowed!');
-        return;
-      }
-
-      const userDoc = await getDoc(doc(db, 'users', user.uid));
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
       const role = userDoc.exists() ? userDoc.data().role : null;
 
       setShowAlert(true);
       setTimeout(() => {
         setShowAlert(false);
         onHide();
-<<<<<<< HEAD
         if (role === "student") navigate("/student-home");
         else if (role === "vendor") navigate("/vendor-home");
         else navigate("/");
-=======
-        if (role === 'student') navigate('/student-home');
-        else if (role === 'vendor') navigate('/vendor-home');
-        else navigate('/');
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
       }, 1000);
     } catch (error) {
       console.error("Google login failed:", error.message);
@@ -148,7 +91,6 @@ const LoginModal = ({ show, onHide }) => {
 
   return (
     <Modal show={show} onHide={onHide} centered className="auth-modal">
-<<<<<<< HEAD
       <Modal.Header closeButton className="border-0 pb-0">
         <Modal.Title
           className="modal-title"
@@ -159,22 +101,12 @@ const LoginModal = ({ show, onHide }) => {
       </Modal.Header>
 
       <Modal.Body className="pt-0" style={{ marginTop: "20px" }}>
-=======
-      <Modal.Header closeButton className="border-0 pb-0" >
-        <Modal.Title className="modal-title" >Welcome Back</Modal.Title>
-      </Modal.Header>
-      <Modal.Body className="pt-0">
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
         {showAlert && (
           <Alert variant="success" className="custom-alert">
             Login successful!
           </Alert>
         )}
-<<<<<<< HEAD
         <Form onSubmit={handleSubmit} style={{ marginTop: "10px" }}>
-=======
-        <Form onSubmit={handleSubmit} style={{marginTop:'10px'}}>
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
           <Form.Group className="mb-3">
             <Form.Label className="form-label">Email Address</Form.Label>
             <Form.Control
@@ -201,23 +133,13 @@ const LoginModal = ({ show, onHide }) => {
             />
           </Form.Group>
 
-<<<<<<< HEAD
           <div className="d-grid gap-2" style={{ marginTop: "4rem" }}>
             <Button type="submit" className="btn-primary-custom w-100">
-=======
-          <div className="d-grid gap-2">
-            <Button type="submit" className="btn-primary-custom">
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
               Sign In
             </Button>
           </div>
         </Form>
-<<<<<<< HEAD
         <div className="d-grid gap-2 mt-3">
-=======
-
-        <div className="text-center mt-3">
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
           <Button
             variant="outline-danger"
             className="w-100"
@@ -227,7 +149,6 @@ const LoginModal = ({ show, onHide }) => {
           </Button>
         </div>
 
-<<<<<<< HEAD
        <div className="text-center mt-3">
   <small className="text-muted">
     Don't have an account?
@@ -238,25 +159,9 @@ const LoginModal = ({ show, onHide }) => {
   </small>
 </div>
 
-=======
-        <div className="text-center mt-3">
-          <small className="text-muted">
-            Don't have an account?{' '}
-            <Button variant="link" className="p-0 text-decoration-none auth-link">
-              Sign up here
-            </Button>
-          </small>
-        </div>
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
       </Modal.Body>
     </Modal>
   );
 };
 
 export default LoginModal;
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4

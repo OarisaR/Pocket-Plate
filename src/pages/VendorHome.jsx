@@ -1,22 +1,13 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import { Container, Row, Col, Card, Button, Badge } from "react-bootstrap";
 
 const VendorHome = () => {
   const [activeFilter, setActiveFilter] = useState("All");
-=======
-import React, { useState } from 'react';
-import { Container, Row, Col, Card, Button, Badge } from 'react-bootstrap';
-
-const VendorHome = () => {
-  const [activeFilter, setActiveFilter] = useState('All');
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
 
   // Mock orders data
   const [orders, setOrders] = useState([
     {
       id: 1,
-<<<<<<< HEAD
       customerName: "Dipannit Paul Orni",
       customerInitials: "D",
       orderTime: "10 mins ago",
@@ -51,47 +42,10 @@ const VendorHome = () => {
       total: 45.0,
       status: "pending",
     },
-=======
-      customerName: 'Dipannit Paul Orni',
-      customerInitials: 'E',
-      orderTime: '10 mins ago',
-      items: 'Chicken Burger, Fries, Coke',
-      total: 24.99,
-      status: 'pending'
-    },
-    {
-      id: 2,
-      customerName: 'Oarisa Rebayet',
-      customerInitials: 'J',
-      orderTime: '15 mins ago',
-      items: 'Veggie Pizza, Garlic Bread',
-      total: 18.50,
-      status: 'pending'
-    },
-    {
-      id: 3,
-      customerName: 'Tamima Hoque',
-      customerInitials: 'S',
-      orderTime: '20 mins ago',
-      items: 'Pasta Carbonara, Tiramisu',
-      total: 32.75,
-      status: 'pending'
-    },
-    {
-      id: 4,
-      customerName: 'Sanjida Eva',
-      customerInitials: 'M',
-      orderTime: '25 mins ago',
-      items: 'Sushi Platter, Green Tea',
-      total: 45.00,
-      status: 'pending'
-    }
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
   ]);
 
   // Calculate order counts
   const orderCounts = {
-<<<<<<< HEAD
     pending: orders.filter((order) => order.status === "pending").length,
     accepted: orders.filter((order) => order.status === "accepted").length,
     cancelled: orders.filter((order) => order.status === "cancelled").length,
@@ -121,32 +75,6 @@ const VendorHome = () => {
   };
 
   const filterButtons = ["All", "Pending", "Accepted", "Cancelled"];
-=======
-    pending: orders.filter(order => order.status === 'pending').length,
-    accepted: orders.filter(order => order.status === 'accepted').length,
-    cancelled: orders.filter(order => order.status === 'cancelled').length
-  };
-
-  // Filter orders based on active filter
-  const filteredOrders = activeFilter === 'All' 
-    ? orders 
-    : orders.filter(order => order.status === activeFilter.toLowerCase());
-
-  // Handle order actions
-  const handleAcceptOrder = (orderId) => {
-    setOrders(orders.map(order => 
-      order.id === orderId ? { ...order, status: 'accepted' } : order
-    ));
-  };
-
-  const handleCancelOrder = (orderId) => {
-    setOrders(orders.map(order => 
-      order.id === orderId ? { ...order, status: 'cancelled' } : order
-    ));
-  };
-
-  const filterButtons = ['All', 'Pending', 'Accepted', 'Cancelled'];
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
 
   return (
     <>
@@ -180,11 +108,7 @@ const VendorHome = () => {
           .vendor-dashboard {
             min-height: 100vh;
             background: linear-gradient(135deg, var(--soft-pink) 0%, var(--light-pink) 100%);
-<<<<<<< HEAD
             padding: 3rem 0 2rem 0;
-=======
-            padding: 3rem 0 4rem 0;
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
             font-family: 'Poppins', sans-serif;
             padding-left: 60px;
             padding-right:60px;
@@ -192,11 +116,7 @@ const VendorHome = () => {
 
           /* Dashboard Header */
           .dashboard-header {
-<<<<<<< HEAD
             margin-bottom: 3rem;
-=======
-            margin-bottom: 4rem;
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
             padding: 0 1rem;
           }
 
@@ -234,7 +154,6 @@ const VendorHome = () => {
             padding: 2.5rem 2rem !important;
           }
 
-<<<<<<< HEAD
          .pending-card {
   background: linear-gradient(135deg, #fce4ec, #f8bbd0); /* soft pink tones */
   border-left: 5px solid #ec407a; /* accent pink */
@@ -255,22 +174,6 @@ const VendorHome = () => {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-=======
-          .pending-card {
-            background: linear-gradient(135deg, var(--soft-pink), var(--light-pink));
-            border-left: 5px solid var(--accent-pink);
-          }
-
-          .accepted-card {
-            background: linear-gradient(135deg, var(--success-light), #ecfdf5);
-            border-left: 5px solid var(--success-medium);
-          }
-
-          .cancelled-card {
-            background: linear-gradient(135deg, var(--error-light), #fef2f2);
-            border-left: 5px solid var(--error-medium);
-          }
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
 
           .summary-icon {
             width: 65px;
@@ -325,10 +228,7 @@ const VendorHome = () => {
           .recent-orders-section {
             margin-bottom: 3rem;
             padding: 0 1rem;
-<<<<<<< HEAD
            
-=======
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
           }
 
           .section-title {
@@ -343,13 +243,8 @@ const VendorHome = () => {
           .orders-card {
             border: none;
             border-radius: 20px;
-<<<<<<< HEAD
             background: var(--white);
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-=======
-            box-shadow: 0 8px 30px var(--shadow-light);
-            background: var(--white);
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
           }
 
           .orders-card .card-body {
@@ -424,17 +319,10 @@ const VendorHome = () => {
           .order-row {
             display: flex;
             align-items: center;
-<<<<<<< HEAD
             padding: 2rem 1rem;
             background: var(--white);
             border-radius: 18px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-=======
-            padding: 2rem 1.5rem;
-            background: var(--white);
-            border-radius: 18px;
-            box-shadow: 0 4px 15px var(--shadow-light);
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
             transition: all 0.3s ease;
             border: 1px solid var(--border-light);
             margin-bottom: 0.5rem;
@@ -453,10 +341,7 @@ const VendorHome = () => {
             flex: 0 0 220px;
             margin-right: 2.5rem;
             padding-right: 1rem;
-<<<<<<< HEAD
         
-=======
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
           }
 
           .customer-avatar {
@@ -868,16 +753,10 @@ const VendorHome = () => {
           {/* Recent Orders Section */}
           <div className="recent-orders-section">
             <h2 className="section-title">Recent Orders</h2>
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
             <Card className="orders-card">
               <Card.Body>
                 <div className="orders-header">
                   <h3 className="orders-table-title">Order Details</h3>
-<<<<<<< HEAD
 
                   {/* Filter Buttons */}
                   <div className="filter-buttons">
@@ -892,16 +771,6 @@ const VendorHome = () => {
                         className={`filter-btn ${
                           activeFilter === filter ? "active" : ""
                         }`}
-=======
-                  
-                  {/* Filter Buttons */}
-                  <div className="filter-buttons">
-                    {filterButtons.map(filter => (
-                      <Button
-                        key={filter}
-                        variant={activeFilter === filter ? 'primary' : 'outline-secondary'}
-                        className={`filter-btn ${activeFilter === filter ? 'active' : ''}`}
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
                         onClick={() => setActiveFilter(filter)}
                       >
                         {filter}
@@ -917,24 +786,16 @@ const VendorHome = () => {
                       <p>No orders found for the selected filter.</p>
                     </div>
                   ) : (
-<<<<<<< HEAD
                     filteredOrders.map((order) => (
-=======
-                    filteredOrders.map(order => (
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
                       <div key={order.id} className="order-row">
                         <div className="order-customer">
                           <div className="customer-avatar">
                             {order.customerInitials}
                           </div>
                           <div className="customer-info">
-<<<<<<< HEAD
                             <div className="customer-name" style={{fontSize : "1rem",width:"200px"}}>
                               {order.customerName}
                             </div>
-=======
-                            <div className="customer-name">{order.customerName}</div>
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
                             <div className="order-time">{order.orderTime}</div>
                           </div>
                         </div>
@@ -948,7 +809,6 @@ const VendorHome = () => {
 
                         <div className="order-total">
                           <span className="total-label">Total</span>
-<<<<<<< HEAD
                           <span className="total-amount">
                             Tk. {order.total.toFixed(2)}
                           </span>
@@ -956,13 +816,6 @@ const VendorHome = () => {
 
                         <div className="order-actions">
                           {order.status === "pending" && (
-=======
-                          <span className="total-amount">${order.total.toFixed(2)}</span>
-                        </div>
-
-                        <div className="order-actions">
-                          {order.status === 'pending' && (
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
                             <>
                               <Button
                                 className="action-btn accept-btn"
@@ -979,7 +832,6 @@ const VendorHome = () => {
                               </Button>
                             </>
                           )}
-<<<<<<< HEAD
                           {order.status === "accepted" && (
                             <Badge className="status-badge accepted-badge">
                               Accepted
@@ -989,13 +841,6 @@ const VendorHome = () => {
                             <Badge className="status-badge cancelled-badge">
                               Cancelled
                             </Badge>
-=======
-                          {order.status === 'accepted' && (
-                            <Badge className="status-badge accepted-badge">Accepted</Badge>
-                          )}
-                          {order.status === 'cancelled' && (
-                            <Badge className="status-badge cancelled-badge">Cancelled</Badge>
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
                           )}
                         </div>
                       </div>
@@ -1012,7 +857,3 @@ const VendorHome = () => {
 };
 
 export default VendorHome;
-<<<<<<< HEAD
-=======
-
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4

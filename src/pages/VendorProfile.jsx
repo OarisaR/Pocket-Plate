@@ -1,22 +1,13 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { Container, Badge, Button, Spinner } from "react-bootstrap";
 import { auth, db } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-=======
-import React, { useState, useEffect } from 'react';
-import { Container, Badge, Spinner } from 'react-bootstrap';
-import { auth, db } from '../firebase';
-import { onAuthStateChanged } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
 
 const VendorProfile = () => {
   const [vendor, setVendor] = useState(null);
   const [loading, setLoading] = useState(true);
 
-<<<<<<< HEAD
   const [isOpen, setIsOpen] = useState(true); // toggle state
   const toggleShopStatus = () => {
     setIsOpen((prev) => !prev);
@@ -40,25 +31,15 @@ const VendorProfile = () => {
 
   const fallbackImage =
     "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=300&fit=crop";
-=======
-  const fallbackImage = "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=300&fit=crop";
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
 
   useEffect(() => {
     const fetchVendor = async () => {
       onAuthStateChanged(auth, async (user) => {
         if (user) {
-<<<<<<< HEAD
           const docRef = doc(db, "users", user.uid);
           const docSnap = await getDoc(docRef);
 
           if (docSnap.exists() && docSnap.data().role === "vendor") {
-=======
-          const docRef = doc(db, 'users', user.uid);
-          const docSnap = await getDoc(docRef);
-
-          if (docSnap.exists() && docSnap.data().role === 'vendor') {
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
             setVendor(docSnap.data());
           } else {
             console.warn("Vendor profile not found or not a vendor.");
@@ -71,7 +52,6 @@ const VendorProfile = () => {
     fetchVendor();
   }, []);
 
-<<<<<<< HEAD
   // Initialize editable fields when vendor data loads
   useEffect(() => {
     if (vendor) {
@@ -81,8 +61,6 @@ const VendorProfile = () => {
     }
   }, [vendor]);
 
-=======
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
   if (loading) {
     return (
       <div className="text-center mt-5">
@@ -96,31 +74,15 @@ const VendorProfile = () => {
     return (
       <div className="text-center mt-5">
         <h3>No vendor profile found.</h3>
-<<<<<<< HEAD
         <p>
           Please make sure you're logged in as a vendor and profile data exists
           in Firestore.
         </p>
-=======
-        <p>Please make sure you're logged in as a vendor and profile data exists in Firestore.</p>
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
       </div>
     );
   }
 
-<<<<<<< HEAD
   const { name, cuisine, rating, location, hours, description, image } = vendor;
-=======
-  const {
-    name,
-    cuisine,
-    rating,
-    location,
-    hours,
-    description,
-    image
-  } = vendor;
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
 
   return (
     <>
@@ -218,7 +180,6 @@ const VendorProfile = () => {
             .profile-title {
               font-size: 2rem;
             }
-<<<<<<< HEAD
             .shop-status {
               font-weight: 800;
               font-size: 1rem;
@@ -232,8 +193,6 @@ const VendorProfile = () => {
             .shop-status.Closed {
               color: red;
             }
-=======
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
           }
         `}
       </style>
@@ -255,7 +214,6 @@ const VendorProfile = () => {
               </div>
               <div className="profile-rating">⭐ {rating || "4.0"}</div>
               <div className="profile-details">
-<<<<<<< HEAD
                 <div className="profile-location">
                   📍{" "}
                   {isEditing ? (
@@ -324,13 +282,6 @@ const VendorProfile = () => {
                     {isOpen ? "🟢 Open" : "🔴 Closed"}
                   </span>
                 </Button>
-=======
-                <div className="profile-location">📍 {location || "Not Provided"}</div>
-                <div className="profile-hours">🕒 {hours || "Hours not set"}</div>
-              </div>
-              <div className="profile-description">
-                {description || "No description available."}
->>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
               </div>
             </div>
           </div>
