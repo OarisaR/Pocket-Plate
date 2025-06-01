@@ -1,0 +1,427 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Color Variables for Pinkish Pastel Theme */
+:root {
+  --pastel-pink: #fce4ec;
+  --soft-rose: #f8bbd9;
+  --blush-pink: #f48fb1;
+  --dusty-rose: #e91e63;
+  --cream-white: #fefefe;
+  --soft-lavender: #f3e5f5;
+  --pale-mint: #e8f5e8;
+  --warm-gray: #f5f5f5;
+  --text-primary: #4a4a4a;
+  --text-secondary: #6b6b6b;
+  --text-muted: #9e9e9e;
+  --white: #ffffff;
+  --shadow-light: rgba(233, 30, 99, 0.1);
+  --shadow-medium: rgba(233, 30, 99, 0.2);
+}
+
+/* Base Typography */
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Landing Hero Section */
+.landing-hero {
+  background: linear-gradient(135deg, 
+    var(--pastel-pink) 0%, 
+    var(--soft-rose) 35%, 
+    var(--soft-lavender) 70%, 
+    var(--pale-mint) 100%);
+  color: var(--text-primary);
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add subtle pattern overlay */
+.landing-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 3.8rem;
+  letter-spacing: -0.5px;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.brand-highlight {
+  background: #DE3163;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: var(--dusty-rose); /* Fallback */
+  font-weight: 900;
+  position: relative;
+}
+
+.hero-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.hero-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Button Styles */
+.hero-buttons .btn-primary-custom {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 0 8px 25px var(--shadow-light);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+.hero-buttons .btn-primary-custom:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px var(--shadow-medium);
+  background: linear-gradient(135deg, var(--dusty-rose), #c2185b);
+  color: var(--white);
+}
+
+.hero-buttons .btn-secondary-custom {
+ 
+  border: 2px solid #b36b74; /* slightly stronger border */
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); /* subtle shadow */
+  box-shadow: 0 4px 8px rgba(191, 95, 112, 0.3); /* soft glow */
+}
+
+.hero-buttons .btn-secondary-custom:hover {
+ transform: translateY(-3px);
+  box-shadow: 0 12px 35px var(--shadow-medium);
+  background: linear-gradient(135deg, var(--dusty-rose), #c2185b);
+  color: var(--white);
+}
+
+/* Features Section */
+.features-section {
+  background: linear-gradient(180deg, var(--cream-white) 0%, var(--warm-gray) 100%);
+  padding: 6rem 0;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+}
+
+.feature-card {
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  background: var(--white);
+  border: 1px solid rgba(233, 30, 99, 0.08);
+  box-shadow: 0 5px 20px rgba(233, 30, 99, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blush-pink), var(--soft-lavender));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(233, 30, 99, 0.15);
+  border-color: var(--blush-pink);
+}
+
+.feature-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  filter: grayscale(20%);
+  transition: filter 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  filter: grayscale(0%);
+}
+
+.feature-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--dusty-rose);
+  line-height: 1.3;
+}
+
+.feature-description {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Navigation Bar Styles (to match the theme) */
+.custom-navbar {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(233, 30, 99, 0.1);
+  box-shadow: 0 2px 20px rgba(233, 30, 99, 0.08);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-brand-custom {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--dusty-rose) !important;
+}
+
+.nav-link-custom {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  color: var(--text-secondary) !important;
+}
+
+.nav-link-custom:hover {
+  color: var(--dusty-rose) !important;
+}
+
+.btn-outline-custom {
+  border: 2px solid var(--blush-pink);
+  color: var(--dusty-rose) !important;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-custom:hover {
+  background: var(--blush-pink);
+  color: var(--white) !important;
+  border-color: var(--dusty-rose);
+}
+
+/* Modal Styles */
+.auth-modal .modal-content {
+  border: none;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(233, 30, 99, 0.15);
+}
+
+.auth-modal .modal-header {
+  background: linear-gradient(135deg, var(--pastel-pink), var(--soft-lavender));
+  border: none;
+  padding: 2rem;
+}
+
+.modal-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--dusty-rose);
+  font-size: 1.8rem;
+}
+
+.auth-modal .modal-body {
+  padding: 2rem;
+  background: var(--cream-white);
+}
+
+.form-label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.form-control-custom {
+  border: 2px solid rgba(233, 30, 99, 0.1);
+  border-radius: 15px;
+  padding: 0.8rem 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  background: var(--white);
+  transition: all 0.3s ease;
+}
+
+.form-control-custom:focus {
+  border-color: var(--blush-pink);
+  box-shadow: 0 0 0 0.2rem rgba(233, 30, 99, 0.15);
+  background: var(--white);
+}
+
+.custom-alert {
+  background: linear-gradient(135deg, var(--pale-mint), var(--soft-lavender));
+  border: none;
+  border-radius: 15px;
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+  }
+  
+  .hero-buttons .btn-primary-custom,
+  .hero-buttons .btn-secondary-custom {
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 1rem 2rem;
+  }
+  
+  .feature-card {
+    margin-bottom: 2rem;
+    padding: 2rem 1.5rem;
+  }
+  
+  .features-section {
+    padding: 4rem 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 2.2rem;
+    letter-spacing: -0.3px;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .landing-hero {
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+  }
+  
+  .feature-icon {
+    font-size: 2.8rem;
+  }
+  
+  .feature-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* Animation Enhancements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.hero-content {
+  animation: fadeInUp 1s ease-out;
+}
+
+.feature-card {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.1s; }
+.feature-card:nth-child(2) { animation-delay: 0.2s; }
+.feature-card:nth-child(3) { animation-delay: 0.3s; }
+
+.brand-highlight {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus States for Better Accessibility */
+.btn-primary-custom:focus,
+.btn-secondary-custom:focus,
+.btn-outline-custom:focus {
+  outline: 3px solid rgba(233, 30, 99, 0.3);
+  outline-offset: 2px;
+}

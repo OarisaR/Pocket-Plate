@@ -1,0 +1,195 @@
+/* General page container */
+.student-home {
+  background: 'linear-gradient(to right, #ffe0ec, #f9f3f3)';
+  min-height: 100vh;
+  padding-bottom: 3rem;
+  font-family: 'Poppins', sans-serif;
+  color: #2c2c2c;
+  margin: 50px;
+}
+
+/* Welcome Section */
+.welcome-section {
+  padding: 2rem 0 1rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.page-title {
+  font-weight: 700;
+  font-size: 2.3rem;
+  margin-bottom: 0.2rem;
+  color: #b8345f;
+}
+
+.page-subtitle {
+  font-size: 1.2rem;
+  color: #555555;
+  margin-top: 0;
+}
+
+/* Restaurants Section */
+.restaurants-section {
+  padding-top: 2rem;
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+  color: #b8345f;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: #777777;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+/* Cards */
+
+.restaurant-card {
+  border: 2px solid rgba(255, 105, 180, 0.6); /* Soft pink border */
+  border-radius: 12px;
+  box-shadow: 
+    0 0 10px rgba(255, 105, 180, 0.5),  /* Outer glow */
+    0 6px 15px rgba(236, 39, 105, 0.442); /* Soft shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff;
+}
+
+
+.restaurant-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(184, 52, 95, 0.3);
+  cursor: pointer;
+}
+
+.restaurant-image-container {
+  position: relative;
+  overflow: hidden;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  height: 180px;
+}
+
+.restaurant-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: scale 0.3s ease;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+
+.restaurant-status-overlay {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+.status-badge {
+  padding: 0.4rem 0.75rem;
+  font-weight: 600;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  user-select: none;
+  background-color: #e91e63;
+  
+}
+
+.status-badge.open {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.status-badge.closed {
+  background-color: #e53935; /* Red */
+  color: white;
+}
+
+.featured-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.featured-label {
+  background-color: #b8345f;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  font-weight: 700;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  user-select: none;
+  box-shadow: 0 2px 6px rgba(184, 52, 95, 0.4);
+}
+
+/* Card Body */
+.restaurant-card-body {
+  padding: 1rem 1.25rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 170px;
+}
+
+.restaurant-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #b8345f;
+  margin-bottom: 0.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.restaurant-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cuisine-type {
+  font-size: 1rem;
+  color: #666666;
+  font-weight: 500;
+}
+
+.restaurant-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #999999;
+  font-weight: 600;
+}
+
+.rating {
+  color: #fbbc04; /* star color */
+}
+
+.delivery-time {
+  color: #b8345f;
+}
+
+/* No Results */
+.no-results h3 {
+  font-weight: 700;
+  color: #b8345f;
+  margin-bottom: 0.5rem;
+}
+
+.no-results p {
+  color: #777777;
+  font-size: 1rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .restaurant-card-body {
+    height: auto;
+  }
+}

@@ -1,0 +1,164 @@
+/* Updated base styling */
+.restaurant-detail {
+  background: linear-gradient(135deg, #fff1f7, #fafafa);
+  min-height: 100vh;
+  padding-bottom: 100px;
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  margin: 50px;
+  margin-top: 85px;
+}
+
+/* Enhanced Card */
+.card {
+  box-shadow: 0 8px 24px rgba(236, 39, 105, 0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: white;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(255, 64, 129, 0.25);
+}
+
+/* Image with softened corners */
+.card-img {
+  height: 250px;
+  object-fit: cover;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+/* Title & text refinement */
+.card-body h2 {
+  font-weight: 700;
+  font-size: 2.1rem;
+  margin-bottom: 0.4rem;
+  color: #222;
+  letter-spacing: -0.5px;
+}
+
+.card-body p {
+  font-size: 1.05rem;
+  color: #666;
+}
+
+/* Badge glow effect */
+.card-body .badge {
+  background-color: #ff4081;
+  color: white;
+  font-weight: 600;
+  padding: 0.5em 1em;
+  font-size: 0.85rem;
+  border-radius: 50px;
+  box-shadow: 0 0 8px rgba(255, 64, 129, 0.5);
+}
+
+/* Info section alignment */
+.card-body .d-flex > div:first-child h6 {
+  font-size: 1.05rem;
+  color: #333;
+  margin-bottom: 0.35rem;
+}
+
+.card-body .d-flex > div:first-child p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.card-body .d-flex > div:last-child {
+  text-align: right;
+  min-width: 100px;
+}
+
+.card-body .d-flex > div:last-child strong {
+  font-size: 1.15rem;
+  color: #ff4081;
+}
+
+/* Modern button styles */
+.card-body button {
+  background-color: #ff4081;
+  border: none;
+  padding: 0.4rem 1rem;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(255, 64, 129, 0.3);
+  transition: all 0.3s ease;
+}
+
+.card-body button:hover {
+  background-color: #e73370;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(231, 51, 112, 0.4);
+}
+
+/* Fixed Cart Button Glow */
+button[style*="fixed"] {
+  box-shadow: 0 8px 18px rgba(255, 64, 129, 0.45);
+  transition: all 0.3s ease;
+}
+
+button[style*="fixed"]:hover {
+  background-color: #e73370;
+  transform: scale(1.1);
+}
+
+/* Modal polish */
+.modal-content {
+  border-radius: 16px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.modal-header {
+  background-color: #ff4081;
+  color: white;
+  border-bottom: none;
+  padding: 1.2rem 1.5rem;
+}
+
+.modal-body p {
+  font-size: 1.05rem;
+  color: #555;
+}
+
+.modal-footer button {
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+/* Responsive tweaks retained */
+@media (max-width: 991px) {
+  .card-img {
+    height: 180px;
+  }
+
+  .card-body h2 {
+    font-size: 1.6rem;
+  }
+
+  .card-body .d-flex > div:first-child h6 {
+    font-size: 1rem;
+  }
+
+  button[style*="fixed"] {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .modal-footer button {
+    width: 100%;
+  }
+}
