@@ -35,7 +35,11 @@ const StudentHome = () => {
     {
       id: 3,
       name: "Placeholder 3",
+<<<<<<< HEAD
       image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400&h=300&fit=crop",
+=======
+      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop",
+>>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
       isOpen: false,
       cuisine: "Mexican",
       rating: 4.7,
@@ -145,9 +149,15 @@ const StudentHome = () => {
             src={restaurant.image}
             alt={restaurant.name}
             className="restaurant-image"
+<<<<<<< HEAD
           /> 
           <div className="restaurant-status-overlay">
             <Badge className={`status-badge ${restaurant.isOpen ? 'open' : 'closed'}`} >
+=======
+          />
+          <div className="restaurant-status-overlay">
+            <Badge className={`status-badge ${restaurant.isOpen ? 'open' : 'closed'}`}>
+>>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
               {restaurant.isOpen ? 'Open' : 'Closed'}
             </Badge>
           </div>
@@ -177,8 +187,13 @@ const StudentHome = () => {
         <div className="welcome-section">
           <Row className="align-items-center mb-4">
             <Col>
+<<<<<<< HEAD
               <h1 className="page-title mt-5">Food cravings? We’ve got you covered! 🍽️</h1>
               <p className="page-subtitle mt-3">What would you like to eat today?</p>
+=======
+              <h1 className="page-title">Good afternoon! 👋</h1>
+              <p className="page-subtitle">What would you like to eat today?</p>
+>>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
             </Col>
           </Row>
         </div>

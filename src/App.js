@@ -12,7 +12,11 @@ import RestaurantDetail from './pages/RestaurantDetail';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+<<<<<<< HEAD
 import Footer from './pages/Footer'; // create if needed
+=======
+
+>>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
 import { useEffect, useState } from 'react';
 import { auth, db } from './firebase';
 import { doc, getDoc } from 'firebase/firestore';
@@ -69,9 +73,13 @@ function App() {
             </h1>
           }
         />
+<<<<<<< HEAD
       
       </Routes>
         <Footer/>
+=======
+      </Routes>
+>>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
     </>
   );
 }

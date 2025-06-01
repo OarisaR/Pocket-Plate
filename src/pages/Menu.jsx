@@ -55,9 +55,14 @@ const VendorMenu = () => {
     page: {
       background: 'linear-gradient(to right, #fff0f5, #ffeef5)',
       minHeight: '100vh',
+<<<<<<< HEAD
      
       fontFamily: `'Poppins', Tahoma, Geneva, Verdana, sans-serif`,
       paddingTop:'6rem',
+=======
+      paddingTop: '40px',
+      fontFamily: `'Poppins', Tahoma, Geneva, Verdana, sans-serif`,
+>>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
     },
     card: {
       backgroundColor: '#fff',
@@ -65,8 +70,11 @@ const VendorMenu = () => {
       borderRadius: '16px',
       boxShadow: '0 4px 16px rgba(255, 192, 203, 0.3)',
       padding: '40px 30px',
+<<<<<<< HEAD
       paddingTop:'40px',
       
+=======
+>>>>>>> 211f792adca55607044eb9358f47795ddb2b3ea4
     },
     title: {
       color: '#d63384',
